@@ -1,0 +1,5 @@
+#define UDP_PORT_RECV 50001
+#define UDP_PORT_SEND 50001
+
+#define UDP_SEND_IP "127.0.0.1"
+#define UDP_RECV_IP "127.0.0.1"
