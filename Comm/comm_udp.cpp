@@ -89,16 +89,7 @@ void CommUdp::recv_data(uint8_t *data, int data_size)
     int addrlen = sizeof(senderinfo);
     int bytesRead = recvfrom(recv_socket, reinterpret_cast<char*>(data), data_size, 0, (SOCKADDR*)&senderinfo, &addrlen);
     std::cout << "Recv data size: " << bytesRead << std::endl;
-
-    /*
-    for (size_t i = 0; i < data_size; i++)
-    {
-        std::cout << data[i] << std::endl;
-    }
-    */
-
 #endif // _WIN64
-
 }
 
 void CommUdp::send_data(const uint8_t *data, int data_size)
@@ -107,8 +98,5 @@ void CommUdp::send_data(const uint8_t *data, int data_size)
     sendto(send_socket, data, data_size, 0, (struct sockaddr *)&send_address, sizeof(send_address));
 #elif _WIN64
     sendto(send_socket, reinterpret_cast<const char*>(data), data_size, 0, (SOCKADDR*)&send_address, sizeof(send_address));
-    //std::string message = "Hello";
-    //sendto(send_socket, message.c_str(), sizeof(message), 0, (SOCKADDR*)&send_address, sizeof(send_address));
-
 #endif // _WIN64
 }
